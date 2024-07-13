@@ -5,9 +5,16 @@ import { Button } from "../../components/button";
 interface ConfirmTripModalProps {
   closeConfirmTripModal: () => void
   createTrip: (event: FormEvent<HTMLFormElement>) => void
+  setOwnerName: (name: string) => void
+  setOwnerEmail: (email: string) => void
 }
 
-export function ConfirmTripModal({ closeConfirmTripModal, createTrip }: ConfirmTripModalProps) {
+export function ConfirmTripModal({ 
+  closeConfirmTripModal, 
+  createTrip, 
+  setOwnerName, 
+  setOwnerEmail 
+}: ConfirmTripModalProps) {
   return (
     <div className="fixed inset-8 bg-black/60 flex items-center justify-center">
       <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -19,7 +26,7 @@ export function ConfirmTripModal({ closeConfirmTripModal, createTrip }: ConfirmT
             </button>
           </div>
           <p className="text-sm text-zinc-400">
-            ara concluir a criação da viagem para <span className="font-semibold text-zinc-100">Florianópolis, Brasil</span> nas datas de <span className="font-semibold text-zinc-100">16 a 27 de Agosto de 2024</span> preencha seus dados abaixo:
+            Para concluir a criação da viagem para <span className="font-semibold text-zinc-100">Florianópolis, Brasil</span> nas datas de <span className="font-semibold text-zinc-100">16 a 27 de Agosto de 2024</span> preencha seus dados abaixo:
           </p>
         </div>
 
@@ -29,7 +36,8 @@ export function ConfirmTripModal({ closeConfirmTripModal, createTrip }: ConfirmT
             <input 
               name="name"
               placeholder="Seu nome completo" 
-              className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" 
+              className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              onChange={event => setOwnerName(event.target.value)}
             />
           </div>
 
@@ -40,6 +48,7 @@ export function ConfirmTripModal({ closeConfirmTripModal, createTrip }: ConfirmT
               name="email"
               placeholder="Seu email pessoal" 
               className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" 
+              onChange={event => setOwnerEmail(event.target.value)}
             />
           </div>
 
